@@ -119,7 +119,6 @@ inside PostgreSQL.
 
 ## Video Walkthrough
 
-
 https://github.com/user-attachments/assets/995417c5-2fea-48cd-bd35-a635ab5a5ccd
 
 
@@ -134,6 +133,36 @@ The service runs through Docker Compose, maintaining database migrations
 with Alembic and persisting structured audit logs for every file change.
 
 ---
+
+## Project Structure
+
+```
+docpilot/
+├── app/
+│   ├── agent/
+│   │   ├── instance.py        # Initializing the agent
+│   │   └── state.py           # Track runs
+│   ├── routers/
+│   │   └── router.py          # Main api router
+│   ├── core/
+│   │   ├── config.py          # Environment settings
+│   │   └── database.py        # Database initialization
+│   ├── models/
+│   │   └── logs.py            # Audit logs table
+│   ├── schemas/
+│   │   └── agent.py           # Pydantic Schema
+│   ├── tools/
+│   │   ├── file_tools.py      # File tools for agent to use
+│   │   ├── logs_services.py   # Audit logs service
+│   │   └── test_runner.py     # Isolated Test case runner
+│   └── main.py                # FastAPI entrypoint
+├── projects/
+│   ├── calculator/            # Example project 1
+│   └── wallet                 # Example project 2
+├── docker-compose.yml
+├── Dockerfile
+└── requirements.txt
+```
 
 ## Running the Project
 
